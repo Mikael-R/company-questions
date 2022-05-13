@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   web:
-    container_name: easy-drink-app
+    container_name: company-questions
     build:
       context: .
       dockerfile: Dockerfile
