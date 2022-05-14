@@ -1,3 +1,5 @@
+import Router from 'next/router'
+
 import DefaultTemplate from 'template/Default'
 
 import type { NextPage } from 'next'
@@ -12,6 +14,7 @@ const HomePage: NextPage = () => {
         </>
       }
       buttonText='Start'
+      buttonOnClick={() => Router.push('questions')}
     />
   )
 }
