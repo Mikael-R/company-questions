@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-type Props = React.ProgressHTMLAttributes<any>
+type Props = React.ProgressHTMLAttributes<HTMLProgressElement>
 
 const Progress = (props: Props) => {
   return <Container {...props} />
