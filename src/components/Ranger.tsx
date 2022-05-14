@@ -25,7 +25,7 @@ const Ranger = ({ optionsSize, side = 'both', onSelect }: Props) => {
     optionsSize += 1
   }
 
-  const [selected, setSelected] = useState(-1)
+  const [selected, setSelected] = useState<number | null>(null)
 
   const increaser = Number((1 / optionsSize).toFixed(2))
 

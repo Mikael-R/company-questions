@@ -1,7 +1,9 @@
 import Http from 'services/Http'
 
+import type { GetQuestionsResponse } from 'types/requests'
+
 export default class QuestionsRepository extends Http {
-  async all() {
-    return await this.get('surveys/frontend-interview')
+  getQuestions() {
+    return this.get<GetQuestionsResponse>('surveys/frontend-interview')
   }
 }
