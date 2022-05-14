@@ -99,6 +99,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+  margin: auto;
 `
 
 const Questions = styled.div`
@@ -150,11 +151,16 @@ const Circle = styled.button<CircleProps>`
   width: 36px;
   height: 36px;
 
+  @media (min-width: 1024px) {
+    width: 42px;
+    height: 42px;
+  }
+
   ${({ background }) => `background: ${background};`}
 
   ${({ selected, theme }) =>
     selected
-      ? `border: 2px solid ${theme.colors.primary};`
+      ? `border: 2px solid ${theme.colors.green300};`
       : `border: 1px solid ${theme.colors.gray200};`}
 
   border-radius: 100%;
