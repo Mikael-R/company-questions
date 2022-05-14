@@ -13,15 +13,13 @@ export default createGlobalStyle`
     }
 
     &::-webkit-scrollbar-track {
-      border-radius: 8px;
       background-color: transparent;
     }
     &::-webkit-scrollbar {
-      width: 8px;
+      width: 6px;
       background-color: transparent;
     }
     &::-webkit-scrollbar-thumb {
-      border-radius: 8px;
       background-color: #c4c4c4;
     }
   }

@@ -14,7 +14,7 @@ type AnswerQuestion = (questionId: string, answer: number) => void
 interface AuthContextData {
   questions: Questions
   questionsAnswers: QuestionsAnswers
-  isLoading: boolean
+  loading: boolean
   answerQuestion: AnswerQuestion
 }
 
@@ -27,14 +27,14 @@ const questionsRepository = new QuestionsRepository()
 const QuestionsContext = createContext<AuthContextData>({
   questions: [],
   questionsAnswers: [],
-  isLoading: true,
+  loading: true,
   answerQuestion: () => undefined
 })
 
 export const QuestionsProvider = ({ children }: AuthProviderProps) => {
   const [questions, setQuestions] = useState<Questions>([])
   const [questionsAnswers, setQuestionsAnswers] = useState<QuestionsAnswers>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [loading, setLoading] = useState(true)
 
   const answerQuestion: AnswerQuestion = (questionId, answer) => {
     setQuestionsAnswers([
@@ -53,7 +53,7 @@ export const QuestionsProvider = ({ children }: AuthProviderProps) => {
     } catch {
       Router.push('/')
     } finally {
-      setIsLoading(false)
+      setLoading(false)
     }
   }
 
@@ -66,7 +66,7 @@ export const QuestionsProvider = ({ children }: AuthProviderProps) => {
       value={{
         questions,
         questionsAnswers,
-        isLoading,
+        loading,
         answerQuestion
       }}
     >
