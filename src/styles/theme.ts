@@ -19,9 +19,11 @@ export default {
     }
   },
   colors: {
+    primary: 'rgba(49, 216, 179, 1)',
     gray100: '#d8d8d8',
     gray200: '#bdbdbd',
-    gray300: '#666666'
+    gray300: '#828282',
+    gray400: '#666666'
   },
   spacings: {
     xxsm: '0.8rem',

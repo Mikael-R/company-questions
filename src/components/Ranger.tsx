@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import styled from 'styled-components'
 
 import { generateArray } from 'utils'
@@ -5,9 +7,10 @@ import { generateArray } from 'utils'
 interface Props {
   optionsSize: number
   side?: 'left' | 'right' | 'both'
+  onSelect?: (value: number) => void
 }
 
-const Ranger = ({ optionsSize, side = 'both' }: Props) => {
+const Ranger = ({ optionsSize, side = 'both', onSelect }: Props) => {
   if (optionsSize < 0) {
     console.warn(
       'In Ranger component, optionsSize prop need be positive, so it will be set to 1'
@@ -22,37 +25,125 @@ const Ranger = ({ optionsSize, side = 'both' }: Props) => {
     optionsSize += 1
   }
 
+  const [selected, setSelected] = useState(-1)
+
   const increaser = Number((1 / optionsSize).toFixed(2))
-  const options = generateArray(optionsSize + 1)
+
+  const options = generateArray({
+    size: optionsSize + 1,
+    formatValue: side === 'both' ? (value) => value * -1 : undefined
+  })
 
   if (side === 'both') {
-    const rightOptions = generateArray(optionsSize + 1)
+    const rightOptions = generateArray({
+      size: optionsSize + 1
+    })
     options.shift()
     options.reverse()
     options.push(...rightOptions)
+  } else if (side === 'left') {
+    options.reverse()
   }
 
-  if (side === 'left') {
-    options.reverse()
+  const handleSelect = (option: number) => {
+    setSelected(option)
+    onSelect && onSelect(option)
   }
 
   return (
     <Container>
-      {options.map((option, i) => {
-        const background = `rgba(70, 70, 70, ${increaser * option})`
-        const title = `option: ${option} | increase: ${increaser}`
-        return <Circle key={i} background={background} title={title} />
-      })}
+      <Questions>
+        {options.map((option) => {
+          const bgAplha = increaser * option
+          const bg = `rgba(70, 70, 70, ${bgAplha < 0 ? bgAplha * -1 : bgAplha})`
+          const title = `option: ${option} | increase: ${increaser} | background: ${bg}`
+
+          return (
+            <Circle
+              key={option}
+              background={bg}
+              title={title}
+              onClick={() => handleSelect(option)}
+              selected={selected === option}
+            />
+          )
+        })}
+      </Questions>
+
+      {optionsSize >= 3 ? (
+        <Texts>
+          <Text>
+            <span>Much worse</span>
+            <span>than now</span>
+          </Text>
+          <Text>
+            <span>Same</span>
+            <span>as now</span>
+          </Text>
+          <Text>
+            <span>Much better</span>
+            <span>than now</span>
+          </Text>
+        </Texts>
+      ) : null}
     </Container>
   )
 }
 
 export default Ranger
 
-const Container = styled.div``
+const Container = styled.div`
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+`
+
+const Questions = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+`
+
+const Texts = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`
+
+const Text = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  span {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: -0.5px;
+    color: ${({ theme }) => theme.colors.gray300};
+  }
+
+  span:first-child {
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  span:last-child {
+    font-style: thin;
+    font-weight: 300;
+  }
+`
 
 interface CircleProps {
   background: string
+  selected: boolean
 }
 
 const Circle = styled.button<CircleProps>`
@@ -61,7 +152,11 @@ const Circle = styled.button<CircleProps>`
 
   ${({ background }) => `background: ${background};`}
 
-  border: 1px solid ${({ theme }) => theme.colors.gray200};
+  ${({ selected, theme }) =>
+    selected
+      ? `border: 2px solid ${theme.colors.primary};`
+      : `border: 1px solid ${theme.colors.gray200};`}
+
   border-radius: 100%;
   outline: none;
   cursor: pointer;

@@ -20,7 +20,7 @@ const Container = styled.div`
 
   text-align: center;
 
-  color: ${({ theme }) => theme.colors.gray300};
+  color: ${({ theme }) => theme.colors.gray400};
 
   h1 {
     font-size: ${({ theme }) => theme.font.sizes['4xl']};

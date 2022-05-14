@@ -22,11 +22,11 @@ const Container = styled.button<Props>`
 
   text-align: center;
 
-  color: ${({ theme }) => theme.colors.gray300};
+  color: ${({ theme }) => theme.colors.gray400};
 
   cursor: pointer;
 
-  border: 1px solid ${({ theme }) => theme.colors.gray300};
+  border: 1px solid ${({ theme }) => theme.colors.gray400};
 
   ${({ theme, rounded }) =>
     rounded ? `border-radius: ${theme.border.radius.lg};` : ''}

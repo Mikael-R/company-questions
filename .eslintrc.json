@@ -23,5 +23,8 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["prettier", "react", "@typescript-eslint"]
+  "plugins": ["prettier", "react", "@typescript-eslint"],
+  "rules": {
+    "@next/next/no-img-element": "off"
+  }
 }
