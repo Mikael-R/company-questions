@@ -33,5 +33,5 @@ export default Arrows
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: ${({ theme }) => theme.spacings.xsm};
 `

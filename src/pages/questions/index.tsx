@@ -41,9 +41,11 @@ const QuestionsPage: NextPage = () => {
                   {++i}. {question.category.name}
                   {currentQuestion?.id === question.id ? 'visible' : 'none'}
                 </Title>
+
                 <Title tag='h3' style={{ marginTop: '30px' }}>
                   {question.title}
                 </Title>
+
                 <Ranger
                   key={question.id}
                   optionsSize={3}
@@ -79,10 +81,8 @@ const QuestionsPage: NextPage = () => {
 export default QuestionsPage
 
 const Container = styled.main`
-  height: 96vh;
+  height: 90vh;
   position: relative;
-
-  padding: 42px 32px;
 `
 
 const Question = styled.div`
@@ -105,7 +105,11 @@ const Wrapper = styled.div<WrapperProps>`
   flex-direction: column;
   justify-content: space-between;
 
-  padding: 48px 72px 24px 32px;
+  padding: 36px;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 56px 36px;
+  }
 `
 
 const Buttons = styled.div`
@@ -113,4 +117,10 @@ const Buttons = styled.div`
 
   display: flex;
   justify-content: space-between;
+
+  padding: 0 24px;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0 36px;
+  }
 `

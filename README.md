@@ -27,10 +27,10 @@ docker-compose up -d
 - Next
 - React
 - Typescript
-- ChakraUi
 - Docker
 - Axios
 - Git
+- Styled Components
 - Storybook
 
 ## Author

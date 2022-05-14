@@ -1,5 +1,7 @@
 import { ThemeProvider } from 'styled-components'
 
+import WaterMark from 'components/WaterMark'
+
 import { QuestionsProvider } from 'contexts/QuestionsContext'
 
 import GlobalStyles from 'styles/global'
@@ -14,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={theme}>
         <QuestionsProvider>
           <Component {...pageProps} />
+          <WaterMark />
         </QuestionsProvider>
       </ThemeProvider>
     </>

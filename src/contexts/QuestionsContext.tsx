@@ -70,8 +70,8 @@ export const QuestionsProvider = ({ children }: AuthProviderProps) => {
 
   const send = async () => {
     await Router.push('success')
+    setCurrentQuestion(questions[0])
     setQuestionsAnswers([])
-    setCurrentQuestion(null)
   }
 
   const goTo: GoTo = (to) => {
