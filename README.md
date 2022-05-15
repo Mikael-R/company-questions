@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to company questions 👋</h1>
 
-> Response questions
+> Project for job test
 
 ### ✨ [Demo](https://compay-questions.vercel.app)
 
@@ -20,6 +20,12 @@ or
 
 ```sh
 docker-compose up -d
+```
+
+### View components
+
+```sh
+yarn storybook
 ```
 
 ## Technologies
