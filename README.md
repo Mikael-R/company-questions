@@ -39,26 +39,14 @@
 
 #### Install Dependencies
 
-```bash
-npm install
-```
-
-or,
-
-```bash
+```sh
 yarn
 ```
 
 #### Run Aplication
 
-```bash
-npm start
-```
-
-or,
-
-```bash
-yarn start
+```sh
+yarn dev
 ```
 
 Runs the app in the development mode.<br />
@@ -66,40 +54,22 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 #### Run storybook
 
-```bash
-npm run storybook
-```
-
-or,
-
-```bash
+```sh
 yarn storybook
 ```
 
 #### Run tests
 
-```bash
-npm run cypress-open
-```
-
-or,
-
-```bash
+```sh
 yarn cypress-open
 ```
 
 ### Using docker
 
-#### Create Containers
-
-```bash
-sh ./scripts/docker-compose-setup.sh
-```
-
 #### Run Aplication
 
-```bash
-sh ./scripts/start-server.sh
+```sh
+sudo make start
 ```
 
 Runs the app in the development mode.<br />
@@ -107,14 +77,16 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 #### Run storybook
 
-```bash
-sh ./scripts/run-storybook.sh
+Open [http://localhost:6006](http://localhost:6006) to view storybook in the browser.
+
+```sh
+sudo make storybook
 ```
 
 #### Run tests
 
-```bash
-sh ./scripts/run-tests.sh
+```sh
+sudo make tests
 ```
 
 [Back To The Top](#title)
@@ -141,8 +113,10 @@ sh ./scripts/run-tests.sh
 <h4 id="features-finished">🎇 Finished</h4>
 
 - [x] Create layout
+- [x] Add docker
 - [x] Add storybook
 - [x] Add tests
+- [x] Create Readme
 
 <h4 id="features-pendent">🎆 Pendent</h4>
 
@@ -166,8 +140,6 @@ sh ./scripts/run-tests.sh
 <i>🐛 Find and report issues</i><br />
 <i>🌟 Star the project</i><br />
 </p>
-
-Check out the [contributing](./CONTRIBUTING.md) page to see the best places to file issues, start discussions and begin contributing.
 
 [Back To The Top](#title)
 
