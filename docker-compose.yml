@@ -5,11 +5,35 @@ services:
     container_name: company-questions
     build:
       context: .
-      dockerfile: Dockerfile
-    command: yarn dev --host
-    volumes:
-      - .:/app
-    ports:
-      - ${PORT:-3000}:${PORT:-3000}
-    env_file:
-      - .env
+      dockerfile: docker/app.dockerfile
+    environment:
+      - PORT=3000
+      - NODE_ENV=development
+    network_mode: host
+    stdin_open: true
+    command: yarn dev
+  storybook:
+    container_name: company-questions-storybook
+    build:
+      context: .
+      dockerfile: docker/storybook.dockerfile
+    environment:
+      - PORT=3000
+      - NODE_ENV=development
+    network_mode: host
+    stdin_open: true
+    command: yarn storybook
+  # e2e:
+  #   container_name: company-questions-e2e
+  #   depends_on:
+  #     - web
+  #   build:
+  #     context: .
+  #     dockerfile: docker/e2e.dockerfile
+  #   environment:
+  #     - CI=1
+  #     - CYPRESS_baseUrl=http://localhost:3000
+  #   volumes:
+  #     - ./cypress:/app/cypress
+  #   network_mode: host
+  #   command: npx cypress run
