@@ -13,6 +13,7 @@ import type { NextPage } from 'next'
 
 const QuestionsPage: NextPage = () => {
   const {
+    questions,
     currentQuestion,
     currentQuestionIndex,
     disablePrevious,
@@ -20,13 +21,12 @@ const QuestionsPage: NextPage = () => {
     goTo,
     loading,
     questionsAnswers,
-    progressValue,
     answerQuestion
   } = useQuestions()
 
   return (
     <Container>
-      <Progress value={progressValue} />
+      <Progress value={currentQuestionIndex + 1 / questions.length || 0} />
 
       {loading ? (
         <Loading />

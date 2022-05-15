@@ -21,7 +21,6 @@ interface AuthContextData {
   goTo: GoTo
   questions: Questions
   questionsAnswers: QuestionsAnswers
-  progressValue: number
   loading: boolean
   answerQuestion: AnswerQuestion
 }
@@ -40,7 +39,6 @@ const QuestionsContext = createContext<AuthContextData>({
   goTo: () => undefined,
   questions: [],
   questionsAnswers: [],
-  progressValue: 0,
   loading: true,
   answerQuestion: () => undefined
 })
@@ -50,8 +48,6 @@ export const QuestionsProvider = ({ children }: AuthProviderProps) => {
   const [questionsAnswers, setQuestionsAnswers] = useState<QuestionsAnswers>([])
   const [currentQuestion, setCurrentQuestion] = useState<CurrentQuestion>(null)
   const [loading, setLoading] = useState(true)
-
-  const progressValue = questionsAnswers.length / questions.length || 0
 
   const currentQuestionIndex = questions.findIndex(
     ({ id }) => id === currentQuestion?.id
@@ -78,7 +74,7 @@ export const QuestionsProvider = ({ children }: AuthProviderProps) => {
 
   const goTo: GoTo = (to) => {
     switch (true) {
-      case progressValue === 1 && to === 'next':
+      case questions.length === questionsAnswers.length && to === 'next':
         return send()
 
       case to === 'previous' && !disablePrevious:
@@ -125,7 +121,6 @@ export const QuestionsProvider = ({ children }: AuthProviderProps) => {
         currentQuestion,
         questions,
         questionsAnswers,
-        progressValue,
         loading,
         answerQuestion
       }}
