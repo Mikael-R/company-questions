@@ -7,11 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "storybook": "start-storybook -p 6006",
+    "predeploy": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static",
     "build-storybook": "build-storybook",
+    "storybook": "start-storybook -p 6006",
     "cypress-open": "cypress open",
     "cypress-run": "cypress run"
   },
+  "homepage": "http://Mikael-R.github.io/company-questions",
   "dependencies": {
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
@@ -41,6 +44,7 @@
     "eslint-config-next": "12.1.6",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "gh-pages": "^4.0.0",
     "husky": "^8.0.1",
     "lint-staged": "^12.4.1",
     "prettier": "^2.6.2",
