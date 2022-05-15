@@ -2,7 +2,7 @@ import React from 'react'
 
 import styled from 'styled-components'
 
-interface Props extends React.HTMLAttributes<HTMLDivElement> {
+export interface Props extends React.HTMLAttributes<HTMLDivElement> {
   tag: 'h1' | 'h2' | 'h3'
 }
 

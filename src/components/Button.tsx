@@ -1,10 +1,10 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   skin?: 'outlined' | 'default' | 'transparent'
   rounded?: boolean
-  size?: 'small' | 'medium' | 'large'
+  size?: 'small' | 'medium'
 }
 
 const Button = (props: Props) => {
@@ -34,13 +34,14 @@ const Container = styled.button<Props>`
     ${skin === 'outlined' &&
     `border: 1px solid ${theme.colors.gray400};background: transparent;`}
 
-  ${skin === 'default' || !skin
+    ${skin === 'default' || !skin
       ? `border: none; background: ${theme.colors.gray200};color: white;`
       : ''}
 
   ${skin === 'transparent' &&
     `border: none;background: transparent;filter: none;box-shadow: none !important;padding: 0 !important;`}
 
+  ${size === 'small' || !size ? 'padding: 7px 20px;' : ''}
   ${size === 'medium' || !size ? 'padding: 15px 80px;' : ''}
 
   filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))

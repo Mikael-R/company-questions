@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import Button from 'components/Button'
 
-interface Props {
+export interface Props {
   disableUp?: boolean
   onClickUp?: () => void
   disableDown?: boolean

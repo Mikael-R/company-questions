@@ -2,9 +2,9 @@ import { useState } from 'react'
 
 import styled from 'styled-components'
 
-import { generateArray } from 'utils'
+import { generateArray } from 'utils/index'
 
-interface Props {
+export interface Props {
   optionsSize: number
   side?: 'left' | 'right' | 'both'
   onSelect?: (value: number) => void
@@ -71,11 +71,16 @@ const Ranger = ({ optionsSize, side = 'both', onSelect }: Props) => {
       </Questions>
 
       {optionsSize >= 3 ? (
-        <Texts>
-          <Text>
-            <span>Much worse</span>
-            <span>than now</span>
-          </Text>
+        <Texts
+          style={{ flexDirection: side === 'left' ? 'row-reverse' : 'row' }}
+        >
+          {side === 'both' && (
+            <Text>
+              <span>Much worse</span>
+              <span>than now</span>
+            </Text>
+          )}
+
           <Text>
             <span>Same</span>
             <span>as now</span>
