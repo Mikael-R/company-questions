@@ -14,11 +14,12 @@ import type { NextPage } from 'next'
 const QuestionsPage: NextPage = () => {
   const {
     currentQuestion,
+    currentQuestionIndex,
     disablePrevious,
     disableNext,
     goTo,
     loading,
-    questions,
+    questionsAnswers,
     progressValue,
     answerQuestion
   } = useQuestions()
@@ -31,30 +32,29 @@ const QuestionsPage: NextPage = () => {
         <Loading />
       ) : (
         <>
-          {questions.map((question, i) => (
-            <Wrapper
-              key={question.id}
-              visible={currentQuestion?.id === question.id}
-            >
-              <Question>
-                <Title tag='h2'>
-                  {++i}. {question.category.name}
-                  {currentQuestion?.id === question.id ? 'visible' : 'none'}
-                </Title>
+          <Wrapper>
+            <Question>
+              <Title tag='h2'>
+                {currentQuestionIndex + 1}. {currentQuestion?.category.name}
+              </Title>
 
-                <Title tag='h3' style={{ marginTop: '30px' }}>
-                  {question.title}
-                </Title>
+              <Title tag='h3' style={{ marginTop: '30px' }}>
+                {currentQuestion?.title}
+              </Title>
 
-                <Ranger
-                  key={question.id}
-                  optionsSize={3}
-                  side='both'
-                  onSelect={(answer) => answerQuestion(question.id, answer)}
-                />
-              </Question>
-            </Wrapper>
-          ))}
+              <Ranger
+                selected={
+                  questionsAnswers.find(({ id }) => id === currentQuestion?.id)
+                    ?.answer
+                }
+                optionsSize={3}
+                side='both'
+                onSelect={(answer) =>
+                  answerQuestion(currentQuestion?.id || '', answer)
+                }
+              />
+            </Question>
+          </Wrapper>
 
           <Buttons>
             <Arrows
@@ -101,8 +101,7 @@ const Wrapper = styled.div<WrapperProps>`
   width: 100vw;
   height: 100%;
 
-  ${({ visible }) => (visible ? 'display: flex;' : 'display: none;')}
-
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
 

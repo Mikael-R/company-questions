@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import styled from 'styled-components'
 
 import { generateArray } from 'utils/index'
@@ -7,10 +5,11 @@ import { generateArray } from 'utils/index'
 export interface Props {
   optionsSize: number
   side?: 'left' | 'right' | 'both'
+  selected?: number
   onSelect?: (value: number) => void
 }
 
-const Ranger = ({ optionsSize, side = 'both', onSelect }: Props) => {
+const Ranger = ({ optionsSize, side = 'both', selected, onSelect }: Props) => {
   if (optionsSize < 0) {
     console.warn(
       'In Ranger component, optionsSize prop need be positive, so it will be set to 1'
@@ -24,8 +23,6 @@ const Ranger = ({ optionsSize, side = 'both', onSelect }: Props) => {
     )
     optionsSize += 1
   }
-
-  const [selected, setSelected] = useState<number | null>(null)
 
   const increaser = Number((1 / optionsSize).toFixed(2))
 
@@ -46,7 +43,6 @@ const Ranger = ({ optionsSize, side = 'both', onSelect }: Props) => {
   }
 
   const handleSelect = (option: number) => {
-    setSelected(option)
     onSelect && onSelect(option)
   }
 

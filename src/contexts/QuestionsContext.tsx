@@ -15,6 +15,7 @@ type GoTo = (to: 'previous' | 'next') => void
 
 interface AuthContextData {
   currentQuestion: CurrentQuestion
+  currentQuestionIndex: number
   disablePrevious: boolean
   disableNext: boolean
   goTo: GoTo
@@ -33,6 +34,7 @@ const questionsRepository = new QuestionsRepository()
 
 const QuestionsContext = createContext<AuthContextData>({
   currentQuestion: null,
+  currentQuestionIndex: -1,
   disablePrevious: true,
   disableNext: true,
   goTo: () => undefined,
@@ -116,6 +118,7 @@ export const QuestionsProvider = ({ children }: AuthProviderProps) => {
   return (
     <QuestionsContext.Provider
       value={{
+        currentQuestionIndex,
         disablePrevious,
         disableNext,
         goTo,
