@@ -6,7 +6,7 @@ export default {
   component: Button,
   args: {
     sklin: 'outline',
-    children: 'Hello Button',
+    children: 'Nice code',
     size: 'small',
     rounded: true
   }

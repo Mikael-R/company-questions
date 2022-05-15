@@ -6,7 +6,7 @@ export default {
   component: Title,
   args: {
     tag: 'h1',
-    children: 'Hello World, pls hide me :)'
+    children: 'The age is only a number! Pls hire me :)'
   }
 } as Meta
 
