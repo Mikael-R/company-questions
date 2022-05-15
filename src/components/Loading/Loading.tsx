@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-
 import Title from 'components/Title'
+
+import * as S from './styles'
 
 const Loading = () => {
   const phases = [
@@ -11,17 +11,10 @@ const Loading = () => {
   const phase = phases[Math.floor(Math.random() * phases.length)]
 
   return (
-    <Container>
+    <S.Container>
       <Title tag='h1'>{phase}</Title>
-    </Container>
+    </S.Container>
   )
 }
 
 export default Loading
-
-const Container = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-`
