@@ -5,13 +5,8 @@ describe('Company questions tests', () => {
     cy.url().should('include', '/questions')
   })
 
-  it('Check quantity of buttons', () => {
-    const numberOfQuestions = 10
-    const numberOfButtonsPerQuestion = 7
-    cy.get('[name="question-button"]').should(
-      'have.length',
-      numberOfButtonsPerQuestion * numberOfQuestions
-    )
+  it('Check quantity of options', () => {
+    cy.get('[name="question-button"]').should('have.length', 7)
   })
 
   it('Check flow', () => {
