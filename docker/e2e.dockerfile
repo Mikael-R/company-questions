@@ -4,4 +4,4 @@ WORKDIR /app
 
 COPY cypress.json ./
 
-RUN npx cypress verify
+RUN cypress verify

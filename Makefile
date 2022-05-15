@@ -1,5 +1,8 @@
+mount: # for first time run mount insted of start
+	docker-compose up --build -d web
+
 start:
-	docker-compose up -d web
+	docker-compose up --build -d web
 
 down:
 	docker-compose down

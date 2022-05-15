@@ -12,11 +12,21 @@ export interface Props {
 const Arrows = ({ disableUp, onClickUp, disableDown, onClickDown }: Props) => {
   return (
     <Container>
-      <Button skin='transparent' disabled={disableUp} onClick={onClickUp}>
+      <Button
+        id='arrow-up'
+        skin='transparent'
+        disabled={disableUp}
+        onClick={onClickUp}
+      >
         <img width={14} height={14} src='/icons/arrow-up.svg' alt='Arrow up' />
       </Button>
 
-      <Button skin='transparent' disabled={disableDown} onClick={onClickDown}>
+      <Button
+        id='arrow-down'
+        skin='transparent'
+        disabled={disableDown}
+        onClick={onClickDown}
+      >
         <img
           width={14}
           height={14}

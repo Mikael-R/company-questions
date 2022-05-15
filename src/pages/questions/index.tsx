@@ -65,6 +65,7 @@ const QuestionsPage: NextPage = () => {
             />
 
             <Button
+              id='continue'
               rounded={true}
               disabled={disableNext}
               onClick={() => goTo('next')}

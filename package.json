@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "cypress-open": "cypress open",
+    "cypress-run": "cypress run"
   },
   "dependencies": {
     "@emotion/react": "^11",
@@ -34,6 +36,7 @@
     "@types/styled-components": "^5.1.25",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "babel-plugin-styled-components": "^2.0.7",
+    "cypress": "^9.6.1",
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",
     "eslint-config-prettier": "^8.5.0",

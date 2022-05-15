@@ -60,6 +60,7 @@ const Ranger = ({ optionsSize, side = 'both', onSelect }: Props) => {
 
           return (
             <Circle
+              name='question-button'
               key={option}
               background={bg}
               title={title}
