@@ -26,7 +26,7 @@ const QuestionsPage: NextPage = () => {
 
   return (
     <Container>
-      <Progress value={currentQuestionIndex + 1 / questions.length || 0} />
+      <Progress value={questionsAnswers.length / questions.length} />
 
       {loading ? (
         <Loading />
