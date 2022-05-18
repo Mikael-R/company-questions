@@ -17,7 +17,7 @@ const DefaultTemplate = ({ title, buttonText, buttonOnClick }: Props) => {
     <S.Container>
       <Logo />
 
-      {title && <Title tag='h1'>{title}</Title>}
+      {title && <Title as='h1'>{title}</Title>}
 
       {buttonText && (
         <Button skin='outlined' rounded={true} onClick={buttonOnClick}>

@@ -15,11 +15,11 @@ const Question = () => {
 
   return (
     <S.Wrapper>
-      <Title tag='h2'>
+      <Title as='h2'>
         {currentQuestionIndex + 1}. {currentQuestion?.category.name}
       </Title>
 
-      <Title tag='h3' style={{ marginTop: '30px' }}>
+      <Title as='h3' style={{ marginTop: '30px' }}>
         {currentQuestion?.title}
       </Title>
 

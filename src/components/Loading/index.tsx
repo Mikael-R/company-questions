@@ -21,7 +21,7 @@ const Loading = () => {
 
   return (
     <S.Container>
-      <Title tag='h1'>{phase}</Title>
+      <Title as='h1'>{phase}</Title>
     </S.Container>
   )
 }
