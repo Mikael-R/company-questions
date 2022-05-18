@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react'
-import WaterMark from 'components/WaterMark'
+import WaterMark from '.'
 
 export default {
   title: 'WaterMark',

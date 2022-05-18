@@ -1,6 +1,6 @@
-import React from 'react'
+import type { ImgHTMLAttributes } from 'react'
 
-type Props = Partial<React.ImgHTMLAttributes<HTMLImageElement>>
+type Props = Partial<ImgHTMLAttributes<HTMLImageElement>>
 
 const Logo = (props: Props) => {
   return (

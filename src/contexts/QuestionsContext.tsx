@@ -4,30 +4,17 @@ import Router from 'next/router'
 
 import QuestionsRepository from 'repositories/questionsRepository'
 
-import type { ReactNode } from 'react'
-import type { Question } from 'types/entities'
+import { isNumber } from 'utils'
 
-type CurrentQuestion = Question | null
-type Questions = Question[]
-type QuestionsAnswers = { id: string; answer: number }[]
-type AnswerQuestion = (questionId: string, answer: number) => void
-type GoTo = (to: 'previous' | 'next') => void
-
-interface AuthContextData {
-  currentQuestion: CurrentQuestion
-  currentQuestionIndex: number
-  disablePrevious: boolean
-  disableNext: boolean
-  goTo: GoTo
-  questions: Questions
-  questionsAnswers: QuestionsAnswers
-  loading: boolean
-  answerQuestion: AnswerQuestion
-}
-
-interface AuthProviderProps {
-  children: ReactNode
-}
+import type {
+  AnswerQuestion,
+  AuthContextData,
+  AuthProviderProps,
+  CurrentQuestion,
+  GoTo,
+  Questions,
+  QuestionsAnswers
+} from 'types/contexts'
 
 const questionsRepository = new QuestionsRepository()
 
@@ -53,18 +40,17 @@ export const QuestionsProvider = ({ children }: AuthProviderProps) => {
     ({ id }) => id === currentQuestion?.id
   )
   const previousQuestion = questions[currentQuestionIndex - 1]
+  const nextQuestion = questions[currentQuestionIndex + 1]
 
-  const disablePrevious = isNaN(
-    Number(
-      questionsAnswers.find(({ id }) => id === previousQuestion?.id)?.answer
-    )
-  )
+  const findQuestionById = (questionId: string) =>
+    questionsAnswers.find(({ id }) => id === questionId)
 
-  const disableNext = isNaN(
-    Number(
-      questionsAnswers.find(({ id }) => id === currentQuestion?.id)?.answer
-    )
-  )
+  const disablePrevious =
+    !previousQuestion ||
+    !isNumber(findQuestionById(previousQuestion.id)?.answer)
+
+  const disableNext =
+    !currentQuestion || !isNumber(findQuestionById(currentQuestion.id)?.answer)
 
   const send = async () => {
     await Router.push('success')
@@ -78,10 +64,10 @@ export const QuestionsProvider = ({ children }: AuthProviderProps) => {
         return send()
 
       case to === 'previous' && !disablePrevious:
-        return setCurrentQuestion(questions[currentQuestionIndex - 1])
+        return setCurrentQuestion(previousQuestion)
 
       case to === 'next' && !disableNext:
-        return setCurrentQuestion(questions[currentQuestionIndex + 1])
+        return setCurrentQuestion(nextQuestion)
     }
   }
 

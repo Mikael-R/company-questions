@@ -1,5 +1,29 @@
-import dynamic from 'next/dynamic'
+import { useState, useEffect } from 'react'
 
-export default dynamic(() => import('./Loading'), {
-  ssr: false
-})
+import Title from 'components/Title'
+
+import { getRandomValueFromArray } from 'utils'
+
+import * as S from './styles'
+
+const Loading = () => {
+  const [phase, setPhase] = useState('')
+
+  const phases = [
+    'The age is only a number!',
+    'Pls hire me :)',
+    'Nice code buddy :)'
+  ]
+
+  useEffect(() => {
+    setPhase(getRandomValueFromArray(phases))
+  }, [])
+
+  return (
+    <S.Container>
+      <Title tag='h1'>{phase}</Title>
+    </S.Container>
+  )
+}
+
+export default Loading

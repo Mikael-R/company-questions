@@ -1,8 +1,8 @@
-import styled from 'styled-components'
-
 import Logo from 'components/Logo'
 import Title from 'components/Title'
 import Button from 'components/Button'
+
+import * as S from './styles'
 
 import type { ReactNode } from 'react'
 
@@ -14,7 +14,7 @@ interface Props {
 
 const DefaultTemplate = ({ title, buttonText, buttonOnClick }: Props) => {
   return (
-    <Container>
+    <S.Container>
       <Logo />
 
       {title && <Title tag='h1'>{title}</Title>}
@@ -24,26 +24,8 @@ const DefaultTemplate = ({ title, buttonText, buttonOnClick }: Props) => {
           {buttonText}
         </Button>
       )}
-    </Container>
+    </S.Container>
   )
 }
 
 export default DefaultTemplate
-
-const Container = styled.main`
-  width: 100vw;
-  height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: ${({ theme }) => theme.spacings.xlg} 0;
-
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.gray100} 45%,
-    ${({ theme }) => theme.colors.gray200} 100%
-  );
-`

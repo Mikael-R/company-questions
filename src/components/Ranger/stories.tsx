@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react'
-import Ranger, { Props } from 'components/Ranger'
+import Ranger, { Props } from '.'
 
 export default {
   title: 'Ranger',

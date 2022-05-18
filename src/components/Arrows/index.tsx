@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-
 import Button from 'components/Button'
+
+import * as S from './styles'
 
 export interface Props {
   disableUp?: boolean
@@ -11,7 +11,7 @@ export interface Props {
 
 const Arrows = ({ disableUp, onClickUp, disableDown, onClickDown }: Props) => {
   return (
-    <Container>
+    <S.Wrapper>
       <Button
         id='arrow-up'
         skin='transparent'
@@ -34,14 +34,8 @@ const Arrows = ({ disableUp, onClickUp, disableDown, onClickDown }: Props) => {
           alt='Arrow down'
         />
       </Button>
-    </Container>
+    </S.Wrapper>
   )
 }
 
 export default Arrows
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: ${({ theme }) => theme.spacings.xsm};
-`

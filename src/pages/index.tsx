@@ -1,6 +1,6 @@
 import Router from 'next/router'
 
-import DefaultTemplate from 'template/Default'
+import DefaultTemplate from 'templates/Default'
 
 import type { NextPage } from 'next'
 

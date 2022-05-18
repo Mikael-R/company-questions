@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import * as S from './styles'
 
 const WaterMark = () => {
   return (
-    <Container>
+    <S.Wrapper>
       Made with{' '}
       <img width={20} height={20} src='/icons/heart.png' alt='Heart' />
       by{' '}
@@ -13,24 +13,8 @@ const WaterMark = () => {
       >
         Mikael-R
       </a>
-    </Container>
+    </S.Wrapper>
   )
 }
 
 export default WaterMark
-
-const Container = styled.div`
-  position: absolute;
-  left: 20px;
-  bottom: 12px;
-
-  color: ${({ theme }) => theme.colors.green600};
-
-  font-size: 12px;
-
-  font-weight: 500;
-
-  img {
-    margin: 0 4px -5px 1px;
-  }
-`

@@ -1,15 +1,6 @@
-import React from 'react'
 import styled from 'styled-components'
 
-export type Props = React.ProgressHTMLAttributes<HTMLProgressElement>
-
-const Progress = (props: Props) => {
-  return <Container {...props} />
-}
-
-export default Progress
-
-const Container = styled.progress`
+export const Progress = styled.progress`
   position: fixed;
   top: 0;
   left: 0;

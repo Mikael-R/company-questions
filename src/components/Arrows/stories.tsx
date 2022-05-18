@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react'
-import Arrows, { Props } from 'components/Arrows'
+import Arrows, { Props } from '.'
 
 export default {
   title: 'Arrows',

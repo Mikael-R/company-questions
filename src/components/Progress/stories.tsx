@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react'
-import Progress, { Props } from 'components/Progress'
+import Progress, { Props } from '.'
 
 export default {
   title: 'Progress',
